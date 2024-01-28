@@ -9,11 +9,12 @@ namespace CapaEntidad
     public class Proveedor
     {
         public int IdProveedor { get; set; }
-        public string Codigo_Proveedor { get; set; }
-        public string Razon_Social_Proveedor { get; set; }
-        public string Correo_Proveedor { get; set; }
-        public string Telefono_Proveedor { get; set; }
-        public bool Estado_Proveedor { get; set; }
-        public string Fecha_Creacion_Proveedor { get; set; }
+        public string Documento { get; set; }
+        public string RazonSocial { get; set; }
+        public string Correo { get; set; }
+        public string Telefono { get; set; }
+        public bool Estado { get; set; }
+        public string FechaCreacion { get; set; }
     }
+
 }

@@ -8,13 +8,13 @@ namespace CapaEntidad
 {
     public class Compra
     {
-        public int Id_Compra { get; set; }
-        public Usuario Id_Usuario { get; set; }
-        public Proveedor Id_Proveedor { get; set; }
-        public string Tipo_Documento_Compra { get; set; }//Boleta o factura
-        public string Codigo_Documento { get; set; }
-        public decimal Monto_Total_Documento { get; set; }
-        public List<Detalle_Compra> Detalle_Compra { get; set; }
-        public string Fecha_Creacion_Compra { get; set; }
+        public int IdCompra { get; set; }
+        public Usuario oUsuario { get; set; }
+        public Proveedor oProveedor { get; set; }
+        public string TipoDocumento { get; set; }
+        public string NumeroDocumento { get; set; }
+        public decimal MontoTotal { get; set; }
+        public List <Detalle_Compra> oDetalle_Compra { get; set; }
+        public string FechaRegistro { get; set; }
     }
 }
