@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0C627A49-A384-4A8D-9163-E6BBC95C1572}</ProjectGuid>
+    <ProjectGuid>{9247D4D8-ECF1-43E5-9C82-7ADB2F259371}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CapaDatos</RootNamespace>
@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj">
-      <Project>{9948136c-d9cf-427b-8063-c2dd5b806b7d}</Project>
+      <Project>{e70649bf-f2ec-420a-8a59-5beeb7becad0}</Project>
       <Name>CapaEntidad</Name>
     </ProjectReference>
   </ItemGroup>

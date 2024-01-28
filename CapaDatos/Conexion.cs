@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 using System.Configuration;
 
 namespace CapaDatos
-{   //La conexion depende del App.config , si cambiamos de pc hay que cambiar el App.config el connectionString
+{
     public class Conexion
     {
-        public static string cadena = ConfigurationManager.ConnectionStrings["Cadena_Conexion"].ToString();
+        public static string cadena = ConfigurationManager.ConnectionStrings["cadena_conexion"].ToString();
     }
+
 }
