@@ -7,3 +7,12 @@ C:\Users\alkut\source\repos\SistemaVentas\CapaDatos\obj\Debug\CapaDatos.csproj.C
 C:\Users\alkut\source\repos\SistemaVentas\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
 C:\Users\alkut\source\repos\SistemaVentas\CapaDatos\obj\Debug\CapaDatos.dll
 C:\Users\alkut\source\repos\SistemaVentas\CapaDatos\obj\Debug\CapaDatos.pdb
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaDatos\bin\Debug\CapaDatos.dll
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaDatos\bin\Debug\CapaEntidad.dll
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaDatos\bin\Debug\CapaEntidad.pdb
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaDatos\obj\Debug\CapaDatos.csproj.AssemblyReference.cache
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaDatos\obj\Debug\CapaDatos.dll
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaDatos\obj\Debug\CapaDatos.pdb

@@ -16,6 +16,7 @@ namespace CapaPresentacion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //Esta linea da el inicio del aplicativo , si no es para pruebas mantener el valor en login
             Application.Run(new Login());
         }
     }

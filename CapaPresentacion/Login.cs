@@ -32,13 +32,10 @@ namespace CapaPresentacion
 
 
             Usuario ousuario = new Cn_Usuario().Listar().Where(u => u.Documento == txt_Documento.Text && u.Clave == txt_Clave.Text).FirstOrDefault();
-
-            //Falla en clave , aun no se por que 
-
             if(ousuario != null)
             {
                 MessageBox.Show("Bienvenido " + ousuario.NombreCompleto);
-                Inicio form = new Inicio();
+                Inicio form = new Inicio(ousuario);
                 form.Show();
                 this.Hide();
 
