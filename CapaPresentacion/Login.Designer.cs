@@ -99,6 +99,7 @@
             this.txt_Clave.Name = "txt_Clave";
             this.txt_Clave.Size = new System.Drawing.Size(299, 26);
             this.txt_Clave.TabIndex = 3;
+            this.txt_Clave.Tag = "*";
             // 
             // txt_Documento
             // 

@@ -34,20 +34,21 @@ namespace CapaPresentacion
             {
                 cboRol.Items.Add(new OpcionCombo() { Valor = item.IdRol, Texto = item.Descripcion });
             }
-                cboRol.DisplayMember = "Texto";
-                cboRol.ValueMember = "Valor";
-                cboRol.SelectedIndex = 0;
-            
-            foreach (DataGridViewColumn columna in dgvData.Columns){
-                    if(columna.Visible == true && columna.Name != "btnSelecionar")
-                    {
-                        cboBusqueda.Items.Add(new OpcionCombo() { Valor = columna.Name, Texto = columna.HeaderText });
-                    }
+            cboRol.DisplayMember = "Texto";
+            cboRol.ValueMember = "Valor";
+            cboRol.SelectedIndex = 0;
+
+            foreach (DataGridViewColumn columna in dgvData.Columns)
+            {
+                if (columna.Visible == true && columna.Name != "btnSelecionar")
+                {
+                    cboBusqueda.Items.Add(new OpcionCombo() { Valor = columna.Name, Texto = columna.HeaderText });
                 }
-                cboBusqueda.DisplayMember = "Texto";
-                cboBusqueda.ValueMember = "Valor";
-                cboBusqueda.SelectedIndex = 0;
-            
+            }
+            cboBusqueda.DisplayMember = "Texto";
+            cboBusqueda.ValueMember = "Valor";
+            cboBusqueda.SelectedIndex = 0;
+
             //Intento de cargar todos los usuarios
             List<Usuario> ListaUsuario = new Cn_Usuario().Listar();
 
@@ -67,12 +68,37 @@ namespace CapaPresentacion
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            dgvData.Rows.Add(new object[] {"",txtId.Text,txtDocumento.Text,txtNombreCompleto.Text,txtCorreo.Text,txtClave.Text,
+            String Mensaje = string.Empty;
+
+            Usuario objusuario = new Usuario()
+            {
+                IdUsuario = Convert.ToInt32(txtId.Text),
+                Documento = txtDocumento.Text,
+                NombreCompleto = txtNombreCompleto.Text,
+                Correo = txtCorreo.Text,
+                Clave = txtClave.Text,
+                oRol = new Rol() { IdRol = Convert.ToInt32(((OpcionCombo)cboRol.SelectedItem).Valor) },
+                Estado = Convert.ToInt32(((OpcionCombo)cboEstado.SelectedItem).Valor) == 1 ? true : false
+            };
+
+            int idusuariogenerado = new Cn_Usuario().Registrar(objusuario, out Mensaje);
+
+            if (idusuariogenerado != 0)
+            {
+                dgvData.Rows.Add(new object[] {"",txtId.Text,txtDocumento.Text,txtNombreCompleto.Text,txtCorreo.Text,txtClave.Text,
                 ((OpcionCombo)cboRol.SelectedItem).Valor.ToString(),
                 ((OpcionCombo)cboRol.SelectedItem).Texto.ToString(),
                 ((OpcionCombo)cboEstado.SelectedItem).Valor.ToString(),
                 ((OpcionCombo)cboEstado.SelectedItem).Texto.ToString(),
+
             });
+                Limpiar();
+            }
+            else
+            {
+                MessageBox.Show(Mensaje);
+            }
+
         }
 
         private void Limpiar()
@@ -99,10 +125,10 @@ namespace CapaPresentacion
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
                 var w = Properties.Resources.check_157977.Width;
                 var h = Properties.Resources.check_157977.Height;
-                var x = e.CellBounds.Left + (e.CellBounds.Width - w / 2);
-                var y = e.CellBounds.Top + (e.CellBounds.Height - h / 2);
+                var x = e.CellBounds.Left + (e.CellBounds.Width / 3);
+                var y = e.CellBounds.Top + (e.CellBounds.Height / 3);
 
-                e.Graphics.DrawImage(Properties.Resources.check_157977 , new Rectangle(x, y, w, h));
+                e.Graphics.DrawImage(Properties.Resources.check_157977, new Rectangle(x, y, w, h));
                 e.Handled = true;
 
             }
@@ -113,7 +139,7 @@ namespace CapaPresentacion
             if (dgvData.Columns[e.ColumnIndex].Name == "btnSelecionar")
             {
                 int indice = e.RowIndex;
-                if (indice >=0)
+                if (indice >= 0)
                 {
                     txtIndice.Text = indice.ToString();
                     txtId.Text = dgvData.Rows[indice].Cells["Id"].Value.ToString();
@@ -122,11 +148,11 @@ namespace CapaPresentacion
                     txtCorreo.Text = dgvData.Rows[indice].Cells["Correo"].Value.ToString();
                     txtClave.Text = dgvData.Rows[indice].Cells["Clave"].Value.ToString();
                     txtConfirmarClave.Text = dgvData.Rows[indice].Cells["Clave"].Value.ToString();
-                    foreach(OpcionCombo oc in cboRol.Items)
+                    foreach (OpcionCombo oc in cboRol.Items)
                     {
-                        if(Convert.ToInt32 (oc.Valor) == Convert.ToInt32(dgvData.Rows[indice].Cells["IdRol"].Value))
+                        if (Convert.ToInt32(oc.Valor) == Convert.ToInt32(dgvData.Rows[indice].Cells["IdRol"].Value))
                         {
-                            int indice_combo = cboRol.Items.IndexOf (oc);
+                            int indice_combo = cboRol.Items.IndexOf(oc);
                             cboRol.SelectedIndex = indice_combo;
                             break;
                         }
@@ -143,6 +169,12 @@ namespace CapaPresentacion
                     }
                 }
             }
+        }
+
+        //Esta funcion esta diseñada para el estilo del datagridview
+        private void dgvData_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            e.CellStyle.ForeColor = Color.Black;
         }
     }
 }
