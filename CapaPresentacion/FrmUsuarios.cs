@@ -81,25 +81,48 @@ namespace CapaPresentacion
                 Estado = Convert.ToInt32(((OpcionCombo)cboEstado.SelectedItem).Valor) == 1 ? true : false
             };
 
-            int idusuariogenerado = new Cn_Usuario().Registrar(objusuario, out Mensaje);
-
-            if (idusuariogenerado != 0)
+            if (objusuario.IdUsuario == 0)
             {
-                dgvData.Rows.Add(new object[] {"",txtId.Text,txtDocumento.Text,txtNombreCompleto.Text,txtCorreo.Text,txtClave.Text,
+                int idusuariogenerado = new Cn_Usuario().Registrar(objusuario, out Mensaje);
+
+                if (idusuariogenerado != 0)
+                {
+                    dgvData.Rows.Add(new object[] {"",txtId.Text,txtDocumento.Text,txtNombreCompleto.Text,txtCorreo.Text,txtClave.Text,
                 ((OpcionCombo)cboRol.SelectedItem).Valor.ToString(),
                 ((OpcionCombo)cboRol.SelectedItem).Texto.ToString(),
                 ((OpcionCombo)cboEstado.SelectedItem).Valor.ToString(),
                 ((OpcionCombo)cboEstado.SelectedItem).Texto.ToString(),
 
             });
-                Limpiar();
+                    Limpiar();
+                }
+                else
+                {
+                    MessageBox.Show(Mensaje);
+                }
             }
             else
             {
-                MessageBox.Show(Mensaje);
+                bool resultado = new Cn_Usuario().Editar(objusuario, out Mensaje);
+                if (resultado)
+                {
+                    DataGridViewRow row = dgvData.Rows[Convert.ToInt32(txtIndice.Text)];
+                    row.Cells["Id"].Value = txtId.Text;
+                    row.Cells["Documento"].Value = txtDocumento.Text;
+                    row.Cells["NombreCompleto"].Value = txtNombreCompleto.Text;
+                    row.Cells["Correo"].Value = txtCorreo.Text;
+                    row.Cells["Clave"].Value = txtClave.Text;
+                    row.Cells["IdRol"].Value = ((OpcionCombo)cboRol.SelectedItem).Valor.ToString();
+                    row.Cells["Rol"].Value = ((OpcionCombo)cboRol.SelectedItem).Valor.ToString();
+                    row.Cells["EstadoValor"].Value = ((OpcionCombo)cboEstado.SelectedItem).Valor.ToString();
+                    row.Cells["Estado"].Value = ((OpcionCombo)cboEstado.SelectedItem).Valor.ToString();
+                    Limpiar();
+                }
+                else { MessageBox.Show(Mensaje); }
             }
-
         }
+
+
 
         private void Limpiar()
         {
@@ -175,6 +198,64 @@ namespace CapaPresentacion
         private void dgvData_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             e.CellStyle.ForeColor = Color.Black;
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if(Convert.ToInt32(txtId.Text) != 0){
+                if (MessageBox.Show("¿Desea Eliminar el usuario", "Mensaje de confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+                    DialogResult.Yes)
+                {
+                    string mensaje= string.Empty;
+                    Usuario objusuario = new Usuario()
+                    {
+                        IdUsuario = Convert.ToInt32(txtId.Text),
+                    };
+
+                    bool respuesta = new Cn_Usuario().Eliminar(objusuario, out mensaje);
+
+                    if(respuesta)
+                    {
+                        dgvData.Rows.RemoveAt(Convert.ToInt32(txtIndice.Text));
+                    }
+                    else
+                    {
+                        MessageBox.Show(mensaje ,"Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                }
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string buscador =  ((OpcionCombo)cboBusqueda.SelectedItem).Valor.ToString();
+
+            if(dgvData.Rows.Count > 0)
+            {
+                foreach(DataGridViewRow row in dgvData.Rows)
+                {
+                    if (row.Cells[buscador].Value.ToString().Trim().ToUpper().Contains(txtBusqueda.Text.Trim().ToUpper()))
+                    {
+                        row.Visible = true;
+                    }
+                    else { row.Visible = false; }
+                }
+
+            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtBusqueda.Text = "";
+            foreach (DataGridViewRow row in dgvData.Rows)
+            {
+                row.Visible=true;
+            }
         }
     }
 }

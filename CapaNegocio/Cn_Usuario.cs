@@ -60,7 +60,7 @@ namespace CapaNegocio
             {
                 Mensaje += "Es necesario ingresar una clave para su documento\n";
             }
-            if (Mensaje != null)
+            if (Mensaje != string.Empty)
             {
                 return false;
             }

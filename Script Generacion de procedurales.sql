@@ -107,3 +107,5 @@ select @Respuesta
 select @mensaje
 
 select * from USUARIO
+
+delete from Usuario where IdUsuario !=1 
