@@ -50,9 +50,9 @@ namespace CapaPresentacion
             cboBusqueda.SelectedIndex = 0;
 
             //Intento de cargar todos los usuarios
-            List<Usuario> ListaUsuario = new Cn_Usuario().Listar();
+            List<Usuario> Lista = new Cn_Usuario().Listar();
 
-            foreach (Usuario item in ListaUsuario)
+            foreach (Usuario item in Lista)
             {
                 dgvData.Rows.Add(new object[] {"",item.IdUsuario ,item.Documento , item.NombreCompleto , item.Correo,item.Clave,
                 item.oRol.IdRol,
@@ -87,7 +87,7 @@ namespace CapaPresentacion
 
                 if (idusuariogenerado != 0)
                 {
-                    dgvData.Rows.Add(new object[] {"",txtId.Text,txtDocumento.Text,txtNombreCompleto.Text,txtCorreo.Text,txtClave.Text,
+                    dgvData.Rows.Add(new object[] {"",idusuariogenerado,txtDocumento.Text,txtNombreCompleto.Text,txtCorreo.Text,txtClave.Text,
                 ((OpcionCombo)cboRol.SelectedItem).Valor.ToString(),
                 ((OpcionCombo)cboRol.SelectedItem).Texto.ToString(),
                 ((OpcionCombo)cboEstado.SelectedItem).Valor.ToString(),
@@ -135,12 +135,13 @@ namespace CapaPresentacion
             txtConfirmarClave.Text = "";
             cboRol.SelectedIndex = 0;
             cboEstado.SelectedIndex = 0;
+            txtDocumento.Select();
 
         }
 
         private void dgvData_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            //Minuto 10
+         
             if (e.RowIndex < 0)
                 return;
             if (e.ColumnIndex == 0)

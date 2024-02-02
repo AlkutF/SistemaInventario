@@ -294,14 +294,14 @@
             this.Contenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Contenedor.Location = new System.Drawing.Point(0, 166);
             this.Contenedor.Name = "Contenedor";
-            this.Contenedor.Size = new System.Drawing.Size(1429, 619);
+            this.Contenedor.Size = new System.Drawing.Size(1429, 635);
             this.Contenedor.TabIndex = 5;
             // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1429, 785);
+            this.ClientSize = new System.Drawing.Size(1429, 801);
             this.Controls.Add(this.Contenedor);
             this.Controls.Add(this.LblUsuario);
             this.Controls.Add(this.label2);
