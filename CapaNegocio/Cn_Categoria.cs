@@ -42,7 +42,7 @@ namespace CapaNegocio
 
             if (obj.Descripcion == "")
             {
-                Mensaje += "Es necesario colocar un noevo nombre a la categoria para editarla\n";
+                Mensaje += "Es necesario colocar un nuevo nombre a la categoria para editarla\n";
             }
             if (Mensaje != string.Empty)
             {

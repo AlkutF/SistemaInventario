@@ -13,6 +13,7 @@ namespace CapaEntidad
         public string NombreCompleto { get; set; }
         public string Correo { get; set; }
         public string Telefono { get; set; }
+        public string DireccionDomicilio {  get; set; }
         public bool Estado { get; set; }
         public string FechaRegistro { get; set; }
     }

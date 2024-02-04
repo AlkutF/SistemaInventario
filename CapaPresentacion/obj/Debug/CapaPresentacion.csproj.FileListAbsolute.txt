@@ -43,4 +43,12 @@ C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\Cap
 C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.frmReportes.resources
 C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.FrmUsuarios.resources
 C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.frmVentas.resources
-C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.frnProducto.resources
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.frmProducto.resources
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\bin\Debug\ClosedXML.dll
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\bin\Debug\ExcelNumberFormat.dll
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\bin\Debug\System.IO.Packaging.dll
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\bin\Debug\ClosedXML.pdb
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\bin\Debug\ClosedXML.xml
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\bin\Debug\ExcelNumberFormat.xml

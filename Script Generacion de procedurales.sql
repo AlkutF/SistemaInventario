@@ -97,15 +97,3 @@ begin
 	return @Mensaje
 end
 
-
---Prueba para evaluar si funciona el proceso , no requiere ejecutarse
-declare @Respuesta bit 
-declare @mensaje varchar(500)
-
-exec SP_EditarUsuario 3,'1','PruebaProcedural2','test@gmail.com','1234',2,1,@Respuesta output , @mensaje output
-select @Respuesta
-select @mensaje
-
-select * from USUARIO
-
-delete from Usuario where IdUsuario !=1 

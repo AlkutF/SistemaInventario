@@ -22,8 +22,8 @@ namespace CapaPresentacion
 
         private void FrmUsuarios_Load(object sender, EventArgs e)
         {
-            cboEstado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
-            cboEstado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Inactivo" });
+            cboEstado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "1" });
+            cboEstado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "0" });
             cboEstado.DisplayMember = "Texto";
             cboEstado.ValueMember = "Valor";
             cboEstado.SelectedIndex = 0;
@@ -59,7 +59,7 @@ namespace CapaPresentacion
                 item.oRol.Descripcion,
                 //Asigno operadores ternarios , para eliminar lineas de codigo 
                 item.Estado== true ?1 : 0,
-                item.Estado== true ?"Activo" : "No activo",
+                item.Estado== true ?1 : 0,
             }); ;
             }
 
@@ -113,9 +113,9 @@ namespace CapaPresentacion
                     row.Cells["Correo"].Value = txtCorreo.Text;
                     row.Cells["Clave"].Value = txtClave.Text;
                     row.Cells["IdRol"].Value = ((OpcionCombo)cboRol.SelectedItem).Valor.ToString();
-                    row.Cells["Rol"].Value = ((OpcionCombo)cboRol.SelectedItem).Valor.ToString();
+                    row.Cells["Rol"].Value = ((OpcionCombo)cboRol.SelectedItem).Texto.ToString();
                     row.Cells["EstadoValor"].Value = ((OpcionCombo)cboEstado.SelectedItem).Valor.ToString();
-                    row.Cells["Estado"].Value = ((OpcionCombo)cboEstado.SelectedItem).Valor.ToString();
+                    row.Cells["Estado"].Value = ((OpcionCombo)cboEstado.SelectedItem).Texto.ToString();
                     Limpiar();
                 }
                 else { MessageBox.Show(Mensaje); }
@@ -223,6 +223,7 @@ namespace CapaPresentacion
                     if(respuesta)
                     {
                         dgvData.Rows.RemoveAt(Convert.ToInt32(txtIndice.Text));
+                        Limpiar();
                     }
                     else
                     {

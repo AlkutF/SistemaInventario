@@ -18,6 +18,5 @@ namespace CapaEntidad
         public decimal PrecioVenta { get; set; }
         public bool Estado { get; set; }
         public string FechaRegistro { get; set; }
-        public byte[] Imagen { get; set; }
     }
 }

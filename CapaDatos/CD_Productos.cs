@@ -13,6 +13,7 @@ namespace CapaDatos
 {
     public class CD_Productos
     {
+
         public List<Producto> Listar()
         {
             List<Producto> lista = new List<Producto>();
@@ -21,12 +22,8 @@ namespace CapaDatos
             {
                 try
                 {
-
-
-
-
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("Select IdProducto ,Codigo,Nombre,p.Descripcion,p.IdCategoria,c.Descripcion[DescripcionCategoria],Stock ,PrecioCompra,PrecioVenta ,Imagen from PRODUCTO p ");
+                    query.AppendLine("Select IdProducto ,Codigo,Nombre,p.Descripcion,p.IdCategoria,c.Descripcion[DescripcionCategoria],Stock ,PrecioCompra,PrecioVenta  from PRODUCTO p ");
                     query.AppendLine("Inner Join CATEGORIA c on c.IdCategoria = p.IdCategoria");
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
                     cmd.CommandType = CommandType.Text;
@@ -46,9 +43,7 @@ namespace CapaDatos
                                 oCategoria = new Categoria() { IdCategoria = Convert.ToInt32(dr["IdCategoria"]), Descripcion = dr["DescripcionCategoria"].ToString() },
                                 Stock = Convert.ToInt32(dr["Stock"]),
                                 PrecioCompra= Convert.ToDecimal(dr["PrecioCompra"].ToString()),
-                                PrecioVenta = Convert.ToDecimal(dr["PrecioVenta"].ToString()),
-                                Imagen = (byte[])dr["Imagen"]
-
+                                PrecioVenta = Convert.ToDecimal(dr["PrecioVenta"].ToString())
                             }); ;
                         }
                     }
@@ -75,7 +70,6 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("Descripcion", obj.Descripcion);
                     cmd.Parameters.AddWithValue("IdCategoria", obj.oCategoria.IdCategoria);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
-                    cmd.Parameters.AddWithValue("Imagen", obj.Imagen);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -106,11 +100,11 @@ namespace CapaDatos
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
                     SqlCommand cmd = new SqlCommand("SP_ModificarProducto", oconexion);
-                    cmd.Parameters.AddWithValue("Codigo", obj.IdProducto);
+                    cmd.Parameters.AddWithValue("IdProducto", obj.IdProducto);
+                    cmd.Parameters.AddWithValue("Codigo", obj.Codigo);
                     cmd.Parameters.AddWithValue("Nombre", obj.Nombre);
                     cmd.Parameters.AddWithValue("Descripcion", obj.Descripcion);
                     cmd.Parameters.AddWithValue("IdCategoria", obj.oCategoria.IdCategoria);
-                    cmd.Parameters.AddWithValue("Imagen", obj.Imagen);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;

@@ -22,8 +22,8 @@ namespace CapaPresentacion
 
         private void frmCategoria_Load(object sender, EventArgs e)
         {
-            cboEstado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
-            cboEstado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Inactivo" });
+            cboEstado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "1" });
+            cboEstado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "0" });
             cboEstado.DisplayMember = "Texto";
             cboEstado.ValueMember = "Valor";
             cboEstado.SelectedIndex = 0;
