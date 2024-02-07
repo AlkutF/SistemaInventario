@@ -37,3 +37,9 @@ Insert into PERMISO (IdRol ,NombreMenu) values
 (2,'MenuProveedores'),
 (2,'MenuAcercaDe')
 
+--Ingreso de datos tabla negocio 
+Use Sistema_Inventario_Test
+
+Select * From Negocio
+
+Insert into Negocio (IdNegocio , Nombre , Ruc ,Direccion) values (1,'NombreNegocio','Numero Ruc','La ecuatoriana')

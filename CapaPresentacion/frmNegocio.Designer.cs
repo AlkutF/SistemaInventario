@@ -29,18 +29,20 @@
         private void InitializeComponent()
         {
             this.label7 = new System.Windows.Forms.Label();
-            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.txtRUC = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnGuardar = new FontAwesome.Sharp.IconButton();
             this.pbxLogo = new System.Windows.Forms.PictureBox();
             this.btnSubir = new FontAwesome.Sharp.IconButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,12 +58,12 @@
             this.label7.TabIndex = 61;
             this.label7.Text = "Direccion";
             // 
-            // txtDescripcion
+            // txtRUC
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(255, 181);
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(181, 26);
-            this.txtDescripcion.TabIndex = 60;
+            this.txtRUC.Location = new System.Drawing.Point(255, 181);
+            this.txtRUC.Name = "txtRUC";
+            this.txtRUC.Size = new System.Drawing.Size(181, 26);
+            this.txtRUC.TabIndex = 60;
             // 
             // label3
             // 
@@ -114,12 +116,12 @@
             this.panel1.Size = new System.Drawing.Size(817, 77);
             this.panel1.TabIndex = 72;
             // 
-            // txtCodigo
+            // txtDireccion
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(255, 268);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(181, 26);
-            this.txtCodigo.TabIndex = 58;
+            this.txtDireccion.Location = new System.Drawing.Point(255, 268);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(181, 26);
+            this.txtDireccion.TabIndex = 58;
             // 
             // label4
             // 
@@ -154,18 +156,20 @@
             this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGuardar.IconSize = 28;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(251, 313);
+            this.btnGuardar.Location = new System.Drawing.Point(255, 390);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(185, 33);
             this.btnGuardar.TabIndex = 65;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // pbxLogo
             // 
             this.pbxLogo.Location = new System.Drawing.Point(18, 81);
             this.pbxLogo.Name = "pbxLogo";
             this.pbxLogo.Size = new System.Drawing.Size(199, 178);
+            this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxLogo.TabIndex = 73;
             this.pbxLogo.TabStop = false;
             // 
@@ -182,27 +186,50 @@
             this.btnSubir.TabIndex = 74;
             this.btnSubir.Text = "Subir Logo";
             this.btnSubir.UseVisualStyleBackColor = true;
+            this.btnSubir.Click += new System.EventHandler(this.btnSubir_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.White;
+            this.label5.Font = new System.Drawing.Font("Yu Gothic", 9F);
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(266, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(28, 23);
+            this.label5.TabIndex = 75;
+            this.label5.Text = "ID";
+            // 
+            // txtID
+            // 
+            this.txtID.Location = new System.Drawing.Point(315, 13);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(121, 26);
+            this.txtID.TabIndex = 76;
             // 
             // frmNegocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1407, 579);
+            this.Controls.Add(this.txtID);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnSubir);
             this.Controls.Add(this.pbxLogo);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtDescripcion);
+            this.Controls.Add(this.txtRUC);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.txtDireccion);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Name = "frmNegocio";
             this.Text = "frmNegocio";
+            this.Load += new System.EventHandler(this.frmNegocio_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -211,17 +238,19 @@
 
         #endregion
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.TextBox txtRUC;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private FontAwesome.Sharp.IconButton btnGuardar;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pbxLogo;
         private FontAwesome.Sharp.IconButton btnSubir;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtID;
     }
 }

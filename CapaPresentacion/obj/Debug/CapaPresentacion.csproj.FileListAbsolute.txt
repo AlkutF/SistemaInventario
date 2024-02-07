@@ -52,3 +52,6 @@ C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\bin\Debug\Clo
 C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\bin\Debug\ClosedXML.xml
 C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\bin\Debug\DocumentFormat.OpenXml.xml
 C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\bin\Debug\ExcelNumberFormat.xml
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.frmNegocio.resources
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProveedor.resources
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProducto.resources
