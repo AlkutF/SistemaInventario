@@ -55,3 +55,8 @@ C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\bin\Debug\Exc
 C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.frmNegocio.resources
 C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProveedor.resources
 C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdProducto.resources
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.frmDetalleCompra.resources
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\bin\Debug\itextsharp.dll
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\bin\Debug\itextsharp.xmlworker.dll
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\bin\Debug\itextsharp.xml
