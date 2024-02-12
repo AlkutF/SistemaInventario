@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cboTipoDocumento = new System.Windows.Forms.ComboBox();
@@ -67,21 +66,13 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtTotalPagar = new System.Windows.Forms.TextBox();
             this.btnFinalizar = new FontAwesome.Sharp.IconButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(244, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1151, 682);
-            this.label1.TabIndex = 0;
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
             // 
@@ -397,6 +388,7 @@
             this.IdProducto.HeaderText = "IdProducto";
             this.IdProducto.MinimumWidth = 8;
             this.IdProducto.Name = "IdProducto";
+            this.IdProducto.ReadOnly = true;
             this.IdProducto.Visible = false;
             this.IdProducto.Width = 150;
             // 
@@ -405,6 +397,7 @@
             this.Producto.HeaderText = "Producto";
             this.Producto.MinimumWidth = 8;
             this.Producto.Name = "Producto";
+            this.Producto.ReadOnly = true;
             this.Producto.Width = 150;
             // 
             // PrecioCompra
@@ -412,6 +405,7 @@
             this.PrecioCompra.HeaderText = "PrecioCompra";
             this.PrecioCompra.MinimumWidth = 8;
             this.PrecioCompra.Name = "PrecioCompra";
+            this.PrecioCompra.ReadOnly = true;
             this.PrecioCompra.Width = 150;
             // 
             // PrecioVenta
@@ -419,6 +413,7 @@
             this.PrecioVenta.HeaderText = "PrecioVenta";
             this.PrecioVenta.MinimumWidth = 8;
             this.PrecioVenta.Name = "PrecioVenta";
+            this.PrecioVenta.ReadOnly = true;
             this.PrecioVenta.Visible = false;
             this.PrecioVenta.Width = 150;
             // 
@@ -427,6 +422,7 @@
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.MinimumWidth = 8;
             this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
             this.Cantidad.Width = 150;
             // 
             // SubTotal
@@ -434,6 +430,7 @@
             this.SubTotal.HeaderText = "SubTotal";
             this.SubTotal.MinimumWidth = 8;
             this.SubTotal.Name = "SubTotal";
+            this.SubTotal.ReadOnly = true;
             this.SubTotal.Width = 150;
             // 
             // btnEliminar
@@ -441,6 +438,7 @@
             this.btnEliminar.HeaderText = "";
             this.btnEliminar.MinimumWidth = 8;
             this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.ReadOnly = true;
             this.btnEliminar.Width = 150;
             // 
             // label12
@@ -474,6 +472,15 @@
             this.btnFinalizar.UseVisualStyleBackColor = true;
             this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(244, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(1151, 682);
+            this.label1.TabIndex = 0;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // frmCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -505,8 +512,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cboTipoDocumento;
@@ -545,5 +550,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SubTotal;
         private System.Windows.Forms.DataGridViewButtonColumn btnEliminar;
         public System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label1;
     }
 }

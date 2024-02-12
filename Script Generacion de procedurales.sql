@@ -152,3 +152,89 @@ begin
 		rollback transaction registro
 	end catch 
 end
+
+
+--Creacion de venta
+
+
+Use Sistema_Inventario_Test
+
+
+Create type [dbo].[EDetalle_Venta] As Table (
+[IdProducto] int Null ,
+[Precio_Venta] decimal (18,2) Null ,
+[Cantidad] int Null ,
+[SubTotal] decimal (18,2) Null
+)
+
+create procedure USP_Registrar_Venta(
+@IdUsuario int ,
+@TipoDocumento varchar(100),
+@NumeroDocumento varchar(100),
+@DocumentoCliente varchar(100),
+@NombreCliente varchar(100),
+@MontoPago decimal (18,2),
+@MontoCambio decimal (18,2),
+@MontoTotal decimal (18,2),
+@DetalleVenta [EDetalle_Venta] READONLY ,
+@Resultado  bit output,
+@Mensaje varchar(500) output
+)
+as
+begin 
+	begin try
+	declare @Idventa int =0
+	set @Resultado = 1
+	set @Mensaje =''
+		begin transaction registro  
+			insert into VENTA (IdUsuario ,TipoDocumento,NumeroDocumento,DocumentoCliente,NombreCliente,MontoPago,MontoCambio,MontoTotal)
+			values(@IdUsuario,@TipoDocumento,@NumeroDocumento,@DocumentoCliente,@NombreCliente,@MontoPago,@MontoCambio,@MontoTotal)
+			set @Idventa = SCOPE_IDENTITY()
+			Insert into DETALLE_VENTA(IdVenta,IdProducto,PrecioVenta,Cantidad,Subtotal)
+			select @Idventa , IdProducto,Precio_Venta,Cantidad,Subtotal from @DetalleVenta
+			commit transaction registro
+	end try
+		begin catch 
+		set @Resultado = 0
+		set @Mensaje = ERROR_MESSAGE()
+		rollback transaction registro
+	end catch 
+end
+
+
+Select * from Venta where NumeroDocumento ='00005'
+Select * from DETALLE_VENTA where IdVenta=5
+
+
+
+Select c.IdCompra , u.NombreCompleto , pr.Documento , pr.RazonSocial,
+c.TipoDocumento ,c.NumeroDocumento , c.MontoTotal,CONVERT(char(10),c.FechaRegistro,103)[FechaRegistro]
+from COMPRA c 
+inner join USUARIO u on c.IdUsuario = u.IdUsuario 
+inner join PROVEEDOR pr on pr.IdProveedor = c.IdProveedor
+where c.NumeroDocumento = @NumeroDocumento
+
+
+
+
+Select p.Nombre , dv.PrecioVenta,dv.Cantidad,dv.Subtotal from DETALLE_VENTA dv 
+inner join PRODUCTO p on dv.IdProducto = p.IdProducto
+where dv.IdVenta = @Idventa
+
+Delete  From VENTA
+Delete From DETALLE_VENTA 
+
+
+Select p.Nombre , dc.PrecioCompra , dc.Cantidad , dc.MontoTotal from DETALLE_COMPRA dc
+inner join PRODUCTO p on p.IdProducto = dc.IdProducto
+where dc.IdCompra = 1
+
+
+
+
+Select v.IdVenta , u.NombreCompleto ,
+v.DocumentoCliente , v.NombreCliente , v.TipoDocumento,
+v.NumeroDocumento , v.MontoPago ,v.MontoCambio, v.MontoTotal , CONVERT(char(10),v.FechaRegistro,103)[FechaRegistro]
+from Venta v
+Inner Join Usuario u on v.IdUsuario =u.IdUsuario
+where v.NumeroDocumento= '00005'

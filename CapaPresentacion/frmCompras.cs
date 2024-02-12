@@ -265,7 +265,7 @@ namespace CapaPresentacion
             bool respuesta = new Cn_Compra().Registrar(oCompra,detalle_compra,out mensaje);
             if (respuesta)
             {
-                var result = MessageBox.Show("Su numero decompra generado fue :\n" + numerodocumento + "\n\n¿Desea copiar al portapales?","Mensaje",MessageBoxButtons.YesNo,MessageBoxIcon.Information);
+                var result = MessageBox.Show("Su numero de compra generado fue :\n" + numerodocumento + "\n\n¿Desea copiar al portapales?","Mensaje",MessageBoxButtons.YesNo,MessageBoxIcon.Information);
                 if(result == DialogResult.Yes)
                 {
                     Clipboard.SetText(numerodocumento);
