@@ -1,5 +1,6 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
+using CapaPresentacion.Utilidades;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
@@ -109,7 +110,8 @@ namespace CapaPresentacion
                     PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
                     pdfDoc.Open();
                     bool obtenido = true;
-                    byte[] byteImage = new Cn_Negocio().ObtenerLogo(out obtenido);
+                    int id = 1;
+                    byte[] byteImage = new Cn_Negocio().ObtenerLogo(out obtenido ,id);
                     if(obtenido) {
                         iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(byteImage);
                         img.ScaleToFit(60, 60);
@@ -129,6 +131,11 @@ namespace CapaPresentacion
                 }   
             }    
 
+        }
+
+        private void frmDetalleCompra_Load(object sender, EventArgs e)
+        {
+           
         }
     }
 }

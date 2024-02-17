@@ -101,7 +101,7 @@
             // cboTipoDocumento
             // 
             this.cboTipoDocumento.FormattingEnabled = true;
-            this.cboTipoDocumento.Location = new System.Drawing.Point(191, 65);
+            this.cboTipoDocumento.Location = new System.Drawing.Point(191, 72);
             this.cboTipoDocumento.Name = "cboTipoDocumento";
             this.cboTipoDocumento.Size = new System.Drawing.Size(147, 28);
             this.cboTipoDocumento.TabIndex = 3;
@@ -116,11 +116,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(187, 36);
+            this.label4.Location = new System.Drawing.Point(187, 48);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(126, 20);
+            this.label4.Size = new System.Drawing.Size(125, 20);
             this.label4.TabIndex = 1;
-            this.label4.Text = "Tipo Documento";
+            this.label4.Text = "Metodo de pago";
             // 
             // label3
             // 
@@ -149,7 +149,7 @@
             // 
             // txtIdProveedor
             // 
-            this.txtIdProveedor.Location = new System.Drawing.Point(444, 16);
+            this.txtIdProveedor.Location = new System.Drawing.Point(405, 7);
             this.txtIdProveedor.Name = "txtIdProveedor";
             this.txtIdProveedor.Size = new System.Drawing.Size(71, 26);
             this.txtIdProveedor.TabIndex = 27;
@@ -191,11 +191,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(323, 36);
+            this.label5.Location = new System.Drawing.Point(323, 44);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 20);
+            this.label5.Size = new System.Drawing.Size(177, 20);
             this.label5.TabIndex = 1;
-            this.label5.Text = "Razon social";
+            this.label5.Text = "Razon social o Nombre ";
             // 
             // label6
             // 
@@ -285,20 +285,20 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(498, 79);
+            this.label10.Location = new System.Drawing.Point(498, 84);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(100, 20);
+            this.label10.Size = new System.Drawing.Size(118, 20);
             this.label10.TabIndex = 29;
-            this.label10.Text = "Precio Venta";
+            this.label10.Text = "Precio de venta";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(323, 72);
+            this.label9.Location = new System.Drawing.Point(323, 84);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(113, 20);
+            this.label9.Size = new System.Drawing.Size(132, 20);
             this.label9.TabIndex = 28;
-            this.label9.Text = "Precio Compra";
+            this.label9.Text = "Precio de compra";
             // 
             // txtIdProducto
             // 
@@ -346,9 +346,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(323, 22);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(73, 20);
+            this.label7.Size = new System.Drawing.Size(157, 20);
             this.label7.TabIndex = 1;
-            this.label7.Text = "Producto";
+            this.label7.Text = "Nombre del producto";
             // 
             // label8
             // 

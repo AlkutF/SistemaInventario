@@ -88,7 +88,7 @@ namespace CapaDatos
             return respuesta;
         }
 
-        public byte[] ObtenerLogo(out bool obtenido)
+        public byte[] ObtenerLogo(out bool obtenido ,int idnegocio)
         {
             obtenido = true;
             byte[] LogoBytes = new byte[0];
@@ -97,10 +97,10 @@ namespace CapaDatos
                 using (SqlConnection conexion = new SqlConnection(Conexion.cadena))
                 {
                     conexion.Open();
-                    string query = "Select Logo from Negocio Where IdNegocio=1";
-                    SqlCommand cmd = new SqlCommand(query, conexion);
+                    string query = "Select Logo from Negocio Where IdNegocio=@IdNegocio";
+                    SqlCommand cmd = new SqlCommand(query.ToString(), conexion);
+                    cmd.Parameters.AddWithValue("@IdNegocio", idnegocio);
                     cmd.CommandType = CommandType.Text;
-
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
                         while (dr.Read())
@@ -118,7 +118,7 @@ namespace CapaDatos
             return LogoBytes;
         }
 
-        public bool ActualizarLogo(byte[] image, out string Mensaje)
+        public bool ActualizarLogo(byte[] image, out string Mensaje , int idnegocio)
         {
             Mensaje = string.Empty;
             bool respuesta = true;
@@ -131,9 +131,10 @@ namespace CapaDatos
 
                     StringBuilder query = new StringBuilder();
                     query.AppendLine("update Negocio set Logo = @imagen");
-                    query.AppendLine("Where IdNegocio = 1;");
+                    query.AppendLine("Where IdNegocio = @IdNegocio;");
                     SqlCommand cmd = new SqlCommand(query.ToString(), conexion);
                     cmd.Parameters.AddWithValue("@imagen", image);
+                    cmd.Parameters.AddWithValue("@IdNegocio", idnegocio);
                     cmd.CommandType = CommandType.Text;
 
                     if (cmd.ExecuteNonQuery() < 1)

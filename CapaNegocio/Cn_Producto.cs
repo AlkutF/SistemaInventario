@@ -12,6 +12,8 @@ namespace CapaNegocio
     {
         private CD_Productos objcd_Productos = new CD_Productos();
 
+
+
         public List<Producto> Listar()
         {
             return objcd_Productos.Listar();
@@ -77,5 +79,39 @@ namespace CapaNegocio
         {
             return objcd_Productos.Eliminar(obj, out Mensaje);
         }
+
+
+        public byte[] ObtenerImagen(out bool obtenido, int id)
+        {
+            if (id != 0)
+            {
+                return objcd_Productos.ObtenerImagen(out obtenido, id);
+            }
+            else
+            {
+                return objcd_Productos.ObtenerImagen(out obtenido, 1);
+            }
+
+        }
+
+        public bool ActualizarImagen(byte[] imagen, out string mensaje, int id)
+        {
+            if (id != 0)
+            {
+                return objcd_Productos.ActualizarImagen(imagen, out mensaje, id);
+            }
+            else
+            {
+                return objcd_Productos.ActualizarImagen(imagen, out mensaje, 1);
+            }
+
+        }
+
+        public int ObtenerIDCreacion()
+        {
+            return objcd_Productos.ObtenerIDCreacion();
+        }
+
+
     }
 }

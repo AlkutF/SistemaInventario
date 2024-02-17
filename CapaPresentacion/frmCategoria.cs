@@ -22,8 +22,8 @@ namespace CapaPresentacion
 
         private void frmCategoria_Load(object sender, EventArgs e)
         {
-            cboEstado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "1" });
-            cboEstado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "0" });
+            cboEstado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
+            cboEstado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "No activo" });
             cboEstado.DisplayMember = "Texto";
             cboEstado.ValueMember = "Valor";
             cboEstado.SelectedIndex = 0;
@@ -92,7 +92,7 @@ namespace CapaPresentacion
                     row.Cells["Id"].Value = txtId.Text;
                     row.Cells["Descripcion"].Value = txtDescripcion.Text;
                     row.Cells["EstadoValor"].Value = ((OpcionCombo)cboEstado.SelectedItem).Valor.ToString();
-                    row.Cells["Estado"].Value = ((OpcionCombo)cboEstado.SelectedItem).Valor.ToString();
+                    row.Cells["Estado"].Value = ((OpcionCombo)cboEstado.SelectedItem).Texto.ToString();
                     Limpiar();
                 }
                 else { MessageBox.Show(Mensaje); }
@@ -139,7 +139,7 @@ namespace CapaPresentacion
                     txtDescripcion.Text = dgvData.Rows[indice].Cells["Descripcion"].Value.ToString();
                     foreach (OpcionCombo oc in cboEstado.Items)
                     {
-                        if (Convert.ToInt32(oc.Valor) == Convert.ToInt32(dgvData.Rows[indice].Cells["Estado"].Value))
+                        if (Convert.ToInt32(oc.Valor) == Convert.ToInt32(dgvData.Rows[indice].Cells["EstadoValor"].Value))
                         {
                             int indice_combo = cboEstado.Items.IndexOf(oc);
                             cboEstado.SelectedIndex = indice_combo;

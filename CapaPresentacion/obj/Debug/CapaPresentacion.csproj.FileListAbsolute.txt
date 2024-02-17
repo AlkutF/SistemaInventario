@@ -40,7 +40,6 @@ C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\Cap
 C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.frmClientes.resources
 C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.frmCompras.resources
 C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.frmProveedores.resources
-C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.frmReportes.resources
 C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.FrmUsuarios.resources
 C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.frmVentas.resources
 C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.frmProducto.resources
@@ -64,3 +63,4 @@ C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\Cap
 C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.Modales.mdCliente.resources
 C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteCompra.resources
 C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteVenta.resources
+C:\Users\alkut\Desktop\Proyecto\SistemaInventario\CapaPresentacion\obj\Debug\CapaPresentacion.MenuAcercaDE.resources

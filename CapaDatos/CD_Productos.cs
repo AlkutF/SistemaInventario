@@ -13,6 +13,29 @@ namespace CapaDatos
 {
     public class CD_Productos
     {
+            public int ObtenerIDCreacion()
+            {
+                int idCorrelativo = 0;
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
+                    try
+                    {
+                        StringBuilder query = new StringBuilder();
+                        query.AppendLine("Select count (*) +1 from PRODUCTO");
+                        SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
+                        cmd.CommandType = CommandType.Text;
+
+                        oconexion.Open();
+
+                        idCorrelativo = Convert.ToInt32(cmd.ExecuteScalar());
+                    }
+                    catch (Exception ex)
+                    {
+                        idCorrelativo = 0;
+                    }
+                }
+                return idCorrelativo;
+            }
 
         public List<Producto> Listar()
         {
@@ -23,7 +46,7 @@ namespace CapaDatos
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("Select IdProducto ,Codigo,Nombre,p.Descripcion,p.IdCategoria,c.Descripcion[DescripcionCategoria],Stock ,PrecioCompra,PrecioVenta  from PRODUCTO p ");
+                    query.AppendLine("Select IdProducto ,Codigo,Nombre,p.Descripcion,p.IdCategoria,c.Descripcion[DescripcionCategoria],Stock ,PrecioCompra,PrecioVenta,p.Estado  from PRODUCTO p");
                     query.AppendLine("Inner Join CATEGORIA c on c.IdCategoria = p.IdCategoria");
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
                     cmd.CommandType = CommandType.Text;
@@ -43,8 +66,9 @@ namespace CapaDatos
                                 oCategoria = new Categoria() { IdCategoria = Convert.ToInt32(dr["IdCategoria"]), Descripcion = dr["DescripcionCategoria"].ToString() },
                                 Stock = Convert.ToInt32(dr["Stock"]),
                                 PrecioCompra= Convert.ToDecimal(dr["PrecioCompra"].ToString()),
-                                PrecioVenta = Convert.ToDecimal(dr["PrecioVenta"].ToString())
-                            }); ;
+                                PrecioVenta = Convert.ToDecimal(dr["PrecioVenta"].ToString()),
+                                Estado = Convert.ToBoolean(dr["Estado"])
+                        }); ;
                         }
                     }
                 }
@@ -154,6 +178,72 @@ namespace CapaDatos
                 respuesta = false;
                 Mensaje = ex.Message;
             }
+            return respuesta;
+        }
+
+        public byte[] ObtenerImagen(out bool obtenido, int id)
+        {
+            obtenido = true;
+            byte[] LogoBytes = new byte[0];
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(Conexion.cadena))
+                {
+                    conexion.Open();
+                    string query = "Select Imagen from PRODUCTO where IdProducto = @IdProducto";
+                    SqlCommand cmd = new SqlCommand(query.ToString(), conexion);
+                    cmd.Parameters.AddWithValue("@IdProducto", id);
+                    cmd.CommandType = CommandType.Text;
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            LogoBytes = (byte[])dr["Imagen"];
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                obtenido = false;
+                LogoBytes = new byte[0];
+            }
+            return LogoBytes;
+        }
+
+        public bool ActualizarImagen(byte[] image, out string Mensaje, int id)
+        {
+            Mensaje = string.Empty;
+            bool respuesta = true;
+
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(Conexion.cadena))
+                {
+                    conexion.Open();
+
+                    StringBuilder query = new StringBuilder();
+                    query.AppendLine("update Producto set imagen = @imagen ");
+                    query.AppendLine("Where IdProducto = @IdProducto;");
+                    SqlCommand cmd = new SqlCommand(query.ToString(), conexion);
+                    cmd.Parameters.AddWithValue("@imagen", image);
+                    cmd.Parameters.AddWithValue("@IdProducto", id);
+                    cmd.CommandType = CommandType.Text;
+
+                    if (cmd.ExecuteNonQuery() < 1)
+                    {
+                        Mensaje = "No se pudo recuperar la imagen";
+                        respuesta = false;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                respuesta = false;
+            }
+
             return respuesta;
         }
     }

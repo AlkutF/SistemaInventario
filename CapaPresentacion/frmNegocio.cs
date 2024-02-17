@@ -31,7 +31,9 @@ namespace CapaPresentacion
         private void frmNegocio_Load(object sender, EventArgs e)
         {
             bool obtenido = true;
-            byte[] byteimage = new Cn_Negocio().ObtenerLogo(out obtenido);
+            int idlogo = 1;
+            idlogo = Convert.ToInt32(txtID.Text);
+            byte[] byteimage = new Cn_Negocio().ObtenerLogo(out obtenido, idlogo);
             if(obtenido)          
                 pbxLogo.Image = ByteaImagen(byteimage);
             Negocio datos = new Cn_Negocio().ObtenerDatos();
@@ -46,13 +48,14 @@ namespace CapaPresentacion
         private void btnSubir_Click(object sender, EventArgs e)
         {
             string mensaje = string.Empty;
-
+            int idlogo = 1;
+            idlogo = Convert.ToInt32(txtID.Text);
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.FileName = "files |*.jpg;*.jpeg;*.png";
             if(ofd.ShowDialog() == DialogResult.OK)
             {
                 byte[] byteimage = File.ReadAllBytes(ofd.FileName);
-                bool respuesta = new Cn_Negocio().ActualizarLogo(byteimage, out mensaje);
+                bool respuesta = new Cn_Negocio().ActualizarLogo(byteimage, out mensaje,idlogo);
                 if (respuesta)
                     pbxLogo.Image = ByteaImagen(byteimage);
                 else 

@@ -79,7 +79,7 @@
             // 
             // txtNumeroDocumento
             // 
-            this.txtNumeroDocumento.Location = new System.Drawing.Point(837, 283);
+            this.txtNumeroDocumento.Location = new System.Drawing.Point(798, 271);
             this.txtNumeroDocumento.Name = "txtNumeroDocumento";
             this.txtNumeroDocumento.Size = new System.Drawing.Size(100, 26);
             this.txtNumeroDocumento.TabIndex = 69;
@@ -151,7 +151,7 @@
             // 
             // txtNombreCliente
             // 
-            this.txtNombreCliente.Location = new System.Drawing.Point(552, 283);
+            this.txtNombreCliente.Location = new System.Drawing.Point(572, 283);
             this.txtNombreCliente.Name = "txtNombreCliente";
             this.txtNombreCliente.Size = new System.Drawing.Size(137, 26);
             this.txtNombreCliente.TabIndex = 65;
@@ -178,9 +178,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(285, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(211, 32);
+            this.label1.Size = new System.Drawing.Size(186, 32);
             this.label1.TabIndex = 48;
-            this.label1.Text = "Detalle Compra";
+            this.label1.Text = "Detalle Venta";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dataGridView1
@@ -238,7 +238,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(589, 254);
+            this.label9.Location = new System.Drawing.Point(568, 260);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(118, 20);
             this.label9.TabIndex = 62;
@@ -304,15 +304,15 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(873, 141);
+            this.label6.Location = new System.Drawing.Point(828, 137);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 20);
+            this.label6.Size = new System.Drawing.Size(144, 20);
             this.label6.TabIndex = 56;
-            this.label6.Text = "Usuario";
+            this.label6.Text = "Usuario encargado";
             // 
             // txtMontoPago
             // 
-            this.txtMontoPago.Location = new System.Drawing.Point(607, 501);
+            this.txtMontoPago.Location = new System.Drawing.Point(621, 503);
             this.txtMontoPago.Name = "txtMontoPago";
             this.txtMontoPago.Size = new System.Drawing.Size(100, 26);
             this.txtMontoPago.TabIndex = 71;
@@ -322,13 +322,13 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(502, 507);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(95, 20);
+            this.label11.Size = new System.Drawing.Size(113, 20);
             this.label11.TabIndex = 70;
-            this.label11.Text = "Monto Pago";
+            this.label11.Text = "Monto Pagodo";
             // 
             // txtMontoCambio
             // 
-            this.txtMontoCambio.Location = new System.Drawing.Point(857, 504);
+            this.txtMontoCambio.Location = new System.Drawing.Point(857, 503);
             this.txtMontoCambio.Name = "txtMontoCambio";
             this.txtMontoCambio.Size = new System.Drawing.Size(100, 26);
             this.txtMontoCambio.TabIndex = 73;
@@ -336,11 +336,11 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(730, 501);
+            this.label12.Location = new System.Drawing.Point(749, 506);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(112, 20);
+            this.label12.Size = new System.Drawing.Size(134, 20);
             this.label12.TabIndex = 72;
-            this.label12.Text = "Monto Cambio";
+            this.label12.Text = "Monto de Cambio";
             // 
             // frmDetalleVenta
             // 

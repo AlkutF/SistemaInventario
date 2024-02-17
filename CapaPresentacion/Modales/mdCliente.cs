@@ -38,8 +38,14 @@ namespace CapaPresentacion.Modales
 
             foreach (Cliente item in Lista)
             {
-                dgvData.Rows.Add(new object[] {item.IdCliente ,item.Documento , item.NombreCompleto
-            }); ;
+                if (item.Estado)
+                {
+                    dgvData.Rows.Add(new object[] {
+                    item.Documento ,
+                    item.NombreCompleto
+            });
+                }
+
             }
         }
 

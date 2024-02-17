@@ -44,16 +44,16 @@
             this.txtNombreProveedor = new System.Windows.Forms.TextBox();
             this.txtDocProveedor = new System.Windows.Forms.TextBox();
             this.txtMontoTotal = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnDescargarPDF = new FontAwesome.Sharp.IconButton();
             this.label7 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtNumeroDocumento = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -158,9 +158,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(869, 134);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 20);
+            this.label6.Size = new System.Drawing.Size(144, 20);
             this.label6.TabIndex = 34;
-            this.label6.Text = "Usuario";
+            this.label6.Text = "Usuario encargado";
             // 
             // txtFecha
             // 
@@ -213,15 +213,6 @@
             this.txtMontoTotal.Size = new System.Drawing.Size(100, 26);
             this.txtMontoTotal.TabIndex = 45;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(585, 247);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(100, 20);
-            this.label9.TabIndex = 40;
-            this.label9.Text = "Razon social";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -268,29 +259,8 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(607, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(752, 150);
             this.dataGridView1.TabIndex = 41;
-            // 
-            // SubTotal
-            // 
-            this.SubTotal.HeaderText = "SubTotal";
-            this.SubTotal.MinimumWidth = 8;
-            this.SubTotal.Name = "SubTotal";
-            this.SubTotal.Width = 150;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.MinimumWidth = 8;
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.Width = 150;
-            // 
-            // PrecioCompra
-            // 
-            this.PrecioCompra.HeaderText = "PrecioCompra";
-            this.PrecioCompra.MinimumWidth = 8;
-            this.PrecioCompra.Name = "PrecioCompra";
-            this.PrecioCompra.Width = 150;
             // 
             // Producto
             // 
@@ -299,18 +269,49 @@
             this.Producto.Name = "Producto";
             this.Producto.Width = 150;
             // 
+            // PrecioCompra
+            // 
+            this.PrecioCompra.HeaderText = "PrecioCompra";
+            this.PrecioCompra.MinimumWidth = 8;
+            this.PrecioCompra.Name = "PrecioCompra";
+            this.PrecioCompra.Width = 150;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.MinimumWidth = 8;
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.Width = 150;
+            // 
+            // SubTotal
+            // 
+            this.SubTotal.HeaderText = "SubTotal";
+            this.SubTotal.MinimumWidth = 8;
+            this.SubTotal.Name = "SubTotal";
+            this.SubTotal.Width = 150;
+            // 
             // txtNumeroDocumento
             // 
-            this.txtNumeroDocumento.Location = new System.Drawing.Point(833, 276);
+            this.txtNumeroDocumento.Location = new System.Drawing.Point(118, 286);
             this.txtNumeroDocumento.Name = "txtNumeroDocumento";
             this.txtNumeroDocumento.Size = new System.Drawing.Size(100, 26);
             this.txtNumeroDocumento.TabIndex = 47;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(560, 253);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(177, 20);
+            this.label9.TabIndex = 48;
+            this.label9.Text = "Razon social o Nombre ";
             // 
             // frmDetalleCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1407, 579);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.btnDescargarPDF);
             this.Controls.Add(this.txtNumeroDocumento);
             this.Controls.Add(this.txtMontoTotal);
@@ -324,7 +325,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label7);
@@ -335,6 +335,7 @@
             this.Controls.Add(this.label6);
             this.Name = "frmDetalleCompra";
             this.Text = "frmDetalleCompra";
+            this.Load += new System.EventHandler(this.frmDetalleCompra_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -359,7 +360,6 @@
         private System.Windows.Forms.TextBox txtNombreProveedor;
         private System.Windows.Forms.TextBox txtDocProveedor;
         private System.Windows.Forms.TextBox txtMontoTotal;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private FontAwesome.Sharp.IconButton btnDescargarPDF;
         private System.Windows.Forms.Label label7;
@@ -369,5 +369,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubTotal;
         private System.Windows.Forms.TextBox txtNumeroDocumento;
+        private System.Windows.Forms.Label label9;
     }
 }

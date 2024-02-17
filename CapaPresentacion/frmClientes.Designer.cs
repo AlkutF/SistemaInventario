@@ -64,8 +64,8 @@
             this.Correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DireccionDomicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EstadoValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
@@ -89,7 +89,6 @@
             this.txtIndice.Size = new System.Drawing.Size(30, 26);
             this.txtIndice.TabIndex = 51;
             this.txtIndice.Text = "-1";
-            this.txtIndice.Visible = false;
             // 
             // btnEditar
             // 
@@ -336,8 +335,8 @@
             this.Correo,
             this.Telefono,
             this.DireccionDomicilio,
-            this.Estado,
-            this.EstadoValor});
+            this.EstadoValor,
+            this.Estado});
             this.dgvData.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dgvData.Location = new System.Drawing.Point(258, 113);
             this.dgvData.MultiSelect = false;
@@ -408,7 +407,6 @@
             this.txtId.Size = new System.Drawing.Size(33, 26);
             this.txtId.TabIndex = 50;
             this.txtId.Text = "0";
-            this.txtId.Visible = false;
             // 
             // txtTelefono
             // 
@@ -474,14 +472,6 @@
             this.DireccionDomicilio.ReadOnly = true;
             this.DireccionDomicilio.Width = 200;
             // 
-            // Estado
-            // 
-            this.Estado.HeaderText = "Estado";
-            this.Estado.MinimumWidth = 8;
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            this.Estado.Width = 150;
-            // 
             // EstadoValor
             // 
             this.EstadoValor.HeaderText = "EstadoValor";
@@ -490,6 +480,14 @@
             this.EstadoValor.ReadOnly = true;
             this.EstadoValor.Visible = false;
             this.EstadoValor.Width = 150;
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.MinimumWidth = 8;
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            this.Estado.Width = 150;
             // 
             // frmClientes
             // 
@@ -564,7 +562,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Correo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn DireccionDomicilio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoValor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
     }
 }

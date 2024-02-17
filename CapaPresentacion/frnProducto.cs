@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using static System.Resources.ResXFileRef;
 using SaveFileDialog = System.Windows.Forms.SaveFileDialog;
 using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace CapaPresentacion
 {
@@ -25,15 +26,15 @@ namespace CapaPresentacion
         public frmProducto()
         {
             InitializeComponent();
+
         }
 
         private void frnProducto_Load(object sender, EventArgs e)
-        {
-            cboEstado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "1" });
-            cboEstado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "0" });
+        {  
+            cboEstado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo " });
+            cboEstado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "No activo" });
             cboEstado.DisplayMember = "Texto";
             cboEstado.ValueMember = "Valor";
-            cboEstado.SelectedIndex = 0;
 
             List<Categoria> ListaCategoria = new Cn_Categoria().Listar();
 
@@ -82,7 +83,15 @@ namespace CapaPresentacion
            
         }
 
-     
+        public Image ByteaImagen(byte[] imagenabyte)
+        {
+            MemoryStream ms = new MemoryStream();
+            ms.Write(imagenabyte, 0, imagenabyte.Length);
+            Image image = new Bitmap(ms);
+            return image;
+        }
+
+
 
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -159,6 +168,8 @@ namespace CapaPresentacion
             cboCategoria.SelectedIndex = 0;
             cboEstado.SelectedIndex = 0;
             txtCodigo.Select();
+            pbxLogo.Visible= false;
+            btnSubir.Visible = false;
 
         }
         private void dgvData_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -195,7 +206,7 @@ namespace CapaPresentacion
                     txtDescripcion.Text = dgvData.Rows[indice].Cells["Descripcion"].Value.ToString();
                     foreach (OpcionCombo oc in cboCategoria.Items)
                     {
-                        if (Convert.ToInt32(oc.Valor) == Convert.ToInt32(dgvData.Rows[indice].Cells["IdCategoria"].Value))
+                        if (Convert.ToInt32(oc.Valor) == Convert.ToInt32(dgvData.Rows[indice].Cells["IdCategoria"].Value.ToString()))
                         {
                             int indice_combo = cboCategoria.Items.IndexOf(oc);
                             cboCategoria.SelectedIndex = indice_combo;
@@ -205,12 +216,25 @@ namespace CapaPresentacion
 
                     foreach (OpcionCombo oc in cboEstado.Items)
                     {
-                        if (Convert.ToInt32(oc.Valor) == Convert.ToInt32(dgvData.Rows[indice].Cells["EstadoValor"].Value))
+                        if (Convert.ToInt32(oc.Valor) == Convert.ToInt32(dgvData.Rows[indice].Cells["EstadoValor"].Value.ToString()))
                         {
                             int indice_combo = cboEstado.Items.IndexOf(oc);
                             cboEstado.SelectedIndex = indice_combo;
                             break;
                         }
+                    }
+                    bool obtenido = true;
+                    int id = Convert.ToInt32(txtId.Text);
+                    byte[] byteimage = new Cn_Productos().ObtenerImagen(out obtenido, id);                
+                    if (obtenido)
+                    {
+                        pbxLogo.Visible = true;
+                        btnSubir.Visible = true;
+                        pbxLogo.Image = ByteaImagen(byteimage);
+                    }
+                    else
+                    {
+                        btnSubir.Visible = true;
                     }
                 }
             }
@@ -327,6 +351,23 @@ namespace CapaPresentacion
             foreach (DataGridViewRow row in dgvData.Rows)
             {
                 row.Visible = true;
+            }
+        }
+
+        private void btnSubir_Click(object sender, EventArgs e)
+        {
+            string mensaje = string.Empty;
+            int id = Convert.ToInt32(txtId.Text);
+            System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog();
+            ofd.FileName = "files |*.jpg;*.jpeg;*.png";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                byte[] byteimage = File.ReadAllBytes(ofd.FileName);
+                bool respuesta = new Cn_Productos().ActualizarImagen(byteimage, out mensaje, id);
+                if (respuesta)
+                    pbxLogo.Image = ByteaImagen(byteimage);
+                else
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
     }

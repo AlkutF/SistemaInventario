@@ -117,4 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label13.Text" xml:space="preserve">
+    <value>4.-Si un elemento se encuentra en un estado "No activo" , el mismo no podra ser utilizado , esto conlleva a que los usarios no activos no podran ingresar y cualquier dato no activo no sera utilizable por el usuario hasta que el mismo se active</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Estable un solo tipo de letra , y haz que visualmente el programa calze bien , varias interfaces se cortan en partes , todo cuadro aun que parezca vacio o tenga un nombre extraño tiene una funcion en el programa , no lo borres e intenta no meterte en el codigo , solo en el inicio debes depender de el para modificar algunas cosas </value>
+  </data>
 </root>

@@ -30,8 +30,8 @@ namespace CapaPresentacion.Modales
                     cboBusqueda.Items.Add(new OpcionCombo() { Valor = columna.Name, Texto = columna.HeaderText });
                 }
             }
-            cboBusqueda.DisplayMember = "Texto";
-            cboBusqueda.ValueMember = "Valor";
+            cboBusqueda.DisplayMember = "Valor";
+            cboBusqueda.ValueMember = "Texto";
             cboBusqueda.SelectedIndex = 0;
 
             List<Producto> Lista = new Cn_Productos().Listar();
@@ -39,17 +39,18 @@ namespace CapaPresentacion.Modales
 
             foreach (Producto item in Lista)
             {
-                dgvData.Rows.Add(new object[] {
-                    item.IdProducto ,
-                    item.Codigo ,
-                    item.Nombre ,
+                if (item.Estado)
+                        {
+                     dgvData.Rows.Add(new object[] {
+                    item.IdProducto,
+                    item.Codigo,
+                    item.Nombre,
                     item.oCategoria.Descripcion,
-                    item.Stock ,
-                    item.PrecioCompra ,
-                    item.PrecioVenta ,
-            }
-
-                ); ;
+                    item.Stock,
+                    item.PrecioCompra,
+                    item.PrecioVenta,
+                  });
+                }
             }
 
         }

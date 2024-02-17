@@ -174,7 +174,7 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvData.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvData.Size = new System.Drawing.Size(597, 450);
+            this.dgvData.Size = new System.Drawing.Size(810, 450);
             this.dgvData.TabIndex = 54;
             this.dgvData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellDoubleClick);
             // 
@@ -189,7 +189,7 @@
             // 
             // Codigo
             // 
-            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.HeaderText = "Codigo Identificacion";
             this.Codigo.MinimumWidth = 8;
             this.Codigo.Name = "Codigo";
             this.Codigo.ReadOnly = true;
@@ -197,7 +197,7 @@
             // 
             // Nombre
             // 
-            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.HeaderText = "Nombre del producto";
             this.Nombre.MinimumWidth = 8;
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
@@ -205,7 +205,7 @@
             // 
             // Categoria
             // 
-            this.Categoria.HeaderText = "Categoria";
+            this.Categoria.HeaderText = "Categoria del producto";
             this.Categoria.MinimumWidth = 8;
             this.Categoria.Name = "Categoria";
             this.Categoria.ReadOnly = true;

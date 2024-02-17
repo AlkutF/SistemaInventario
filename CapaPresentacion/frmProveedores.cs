@@ -22,8 +22,8 @@ namespace CapaPresentacion
 
         private void frmProveedores_Load(object sender, EventArgs e)
         {
-            cboEstado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "1" });
-            cboEstado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "2" });
+            cboEstado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
+            cboEstado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "No activo" });
             cboEstado.DisplayMember = "Texto";
             cboEstado.ValueMember = "Valor";
             cboEstado.SelectedIndex = 0;
@@ -131,7 +131,7 @@ namespace CapaPresentacion
                     txtTelefono.Text = dgvData.Rows[indice].Cells["Telefono"].Value.ToString();
                     foreach (OpcionCombo oc in cboEstado.Items)
                     {
-                        if (Convert.ToInt32(oc.Valor) == Convert.ToInt32(dgvData.Rows[indice].Cells["Estado"].Value))
+                        if (Convert.ToInt32(oc.Valor) == Convert.ToInt32(dgvData.Rows[indice].Cells["EstadoValor"].Value))
                         {
                             int indice_combo = cboEstado.Items.IndexOf(oc);
                             cboEstado.SelectedIndex = indice_combo;

@@ -39,8 +39,14 @@ namespace CapaPresentacion.Modales
 
             foreach (Proveedor item in Lista)
             {
-                dgvData.Rows.Add(new object[] {item.IdProveedor ,item.Documento , item.RazonSocial 
-            }); ;
+                if (item.Estado)
+                {
+                    dgvData.Rows.Add(new object[] {
+                        item.IdProveedor ,
+                        item.Documento , 
+                        item.RazonSocial
+                     });
+                }
             }
         }
 

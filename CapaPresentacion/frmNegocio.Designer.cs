@@ -206,6 +206,7 @@
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(121, 26);
             this.txtID.TabIndex = 76;
+            this.txtID.Text = "1";
             // 
             // frmNegocio
             // 

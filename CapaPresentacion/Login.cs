@@ -31,7 +31,7 @@ namespace CapaPresentacion
             List<Usuario> TEST = new Cn_Usuario().Listar();
 
 
-            Usuario ousuario = new Cn_Usuario().Listar().Where(u => u.Documento == txt_Documento.Text && u.Clave == txt_Clave.Text).FirstOrDefault();
+            Usuario ousuario = new Cn_Usuario().Listar().Where(u => u.Documento == txt_Documento.Text && u.Clave == txt_Clave.Text &&  u.Estado == true).FirstOrDefault();
             if(ousuario != null)
             {
                 MessageBox.Show("Bienvenido " + ousuario.NombreCompleto);

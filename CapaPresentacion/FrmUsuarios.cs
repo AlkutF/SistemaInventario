@@ -22,8 +22,8 @@ namespace CapaPresentacion
 
         private void FrmUsuarios_Load(object sender, EventArgs e)
         {
-            cboEstado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "1" });
-            cboEstado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "0" });
+            cboEstado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
+            cboEstado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "No activo" });
             cboEstado.DisplayMember = "Texto";
             cboEstado.ValueMember = "Valor";
             cboEstado.SelectedIndex = 0;
@@ -57,9 +57,10 @@ namespace CapaPresentacion
                 dgvData.Rows.Add(new object[] {"",item.IdUsuario ,item.Documento , item.NombreCompleto , item.Correo,item.Clave,
                 item.oRol.IdRol,
                 item.oRol.Descripcion,
-                //Asigno operadores ternarios , para eliminar lineas de codigo 
-                item.Estado== true ?1 : 0,
-                item.Estado== true ?1 : 0,
+                //Asigno operadores ternarios , para eliminar lineas de codigo           
+                item.Estado== true ? 1 : 0,
+                item.Estado== true ?"Activo" : "No activo",
+
             }); ;
             }
 
@@ -69,57 +70,62 @@ namespace CapaPresentacion
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             String Mensaje = string.Empty;
-
-            Usuario objusuario = new Usuario()
-            {
-                IdUsuario = Convert.ToInt32(txtId.Text),
-                Documento = txtDocumento.Text,
-                NombreCompleto = txtNombreCompleto.Text,
-                Correo = txtCorreo.Text,
-                Clave = txtClave.Text,
-                oRol = new Rol() { IdRol = Convert.ToInt32(((OpcionCombo)cboRol.SelectedItem).Valor) },
-                Estado = Convert.ToInt32(((OpcionCombo)cboEstado.SelectedItem).Valor) == 1 ? true : false
-            };
-
-            if (objusuario.IdUsuario == 0)
-            {
-                int idusuariogenerado = new Cn_Usuario().Registrar(objusuario, out Mensaje);
-
-                if (idusuariogenerado != 0)
+            string clave1 =txtClave.Text;
+            string clave2 = txtConfirmarClave.Text;
+            if(clave1 == clave2) {
+                Usuario objusuario = new Usuario()
                 {
-                    dgvData.Rows.Add(new object[] {"",idusuariogenerado,txtDocumento.Text,txtNombreCompleto.Text,txtCorreo.Text,txtClave.Text,
+                    IdUsuario = Convert.ToInt32(txtId.Text),
+                    Documento = txtDocumento.Text,
+                    NombreCompleto = txtNombreCompleto.Text,
+                    Correo = txtCorreo.Text,
+                    Clave = txtClave.Text,
+                    oRol = new Rol() { IdRol = Convert.ToInt32(((OpcionCombo)cboRol.SelectedItem).Valor) },
+                    Estado = Convert.ToInt32(((OpcionCombo)cboEstado.SelectedItem).Valor) == 1 ? true : false
+                };
+
+                if (objusuario.IdUsuario == 0)
+                {
+                    int idusuariogenerado = new Cn_Usuario().Registrar(objusuario, out Mensaje);
+
+                    if (idusuariogenerado != 0)
+                    {
+                        dgvData.Rows.Add(new object[] {"",idusuariogenerado,txtDocumento.Text,txtNombreCompleto.Text,txtCorreo.Text,txtClave.Text,
                 ((OpcionCombo)cboRol.SelectedItem).Valor.ToString(),
                 ((OpcionCombo)cboRol.SelectedItem).Texto.ToString(),
                 ((OpcionCombo)cboEstado.SelectedItem).Valor.ToString(),
                 ((OpcionCombo)cboEstado.SelectedItem).Texto.ToString(),
 
             });
-                    Limpiar();
+                        Limpiar();
+                    }
+                    else
+                    {
+                        MessageBox.Show(Mensaje);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show(Mensaje);
+                    bool resultado = new Cn_Usuario().Editar(objusuario, out Mensaje);
+                    if (resultado)
+                    {
+                        DataGridViewRow row = dgvData.Rows[Convert.ToInt32(txtIndice.Text)];
+                        row.Cells["Id"].Value = txtId.Text;
+                        row.Cells["Documento"].Value = txtDocumento.Text;
+                        row.Cells["NombreCompleto"].Value = txtNombreCompleto.Text;
+                        row.Cells["Correo"].Value = txtCorreo.Text;
+                        row.Cells["Clave"].Value = txtClave.Text;
+                        row.Cells["IdRol"].Value = ((OpcionCombo)cboRol.SelectedItem).Valor.ToString();
+                        row.Cells["Rol"].Value = ((OpcionCombo)cboRol.SelectedItem).Texto.ToString();
+                        row.Cells["Estado"].Value = ((OpcionCombo)cboEstado.SelectedItem).Texto.ToString();
+                        row.Cells["EstadoValor"].Value = ((OpcionCombo)cboEstado.SelectedItem).Valor.ToString();
+                        Limpiar();
+                    }
+                    else { MessageBox.Show(Mensaje); }
                 }
-            }
-            else
-            {
-                bool resultado = new Cn_Usuario().Editar(objusuario, out Mensaje);
-                if (resultado)
-                {
-                    DataGridViewRow row = dgvData.Rows[Convert.ToInt32(txtIndice.Text)];
-                    row.Cells["Id"].Value = txtId.Text;
-                    row.Cells["Documento"].Value = txtDocumento.Text;
-                    row.Cells["NombreCompleto"].Value = txtNombreCompleto.Text;
-                    row.Cells["Correo"].Value = txtCorreo.Text;
-                    row.Cells["Clave"].Value = txtClave.Text;
-                    row.Cells["IdRol"].Value = ((OpcionCombo)cboRol.SelectedItem).Valor.ToString();
-                    row.Cells["Rol"].Value = ((OpcionCombo)cboRol.SelectedItem).Texto.ToString();
-                    row.Cells["EstadoValor"].Value = ((OpcionCombo)cboEstado.SelectedItem).Valor.ToString();
-                    row.Cells["Estado"].Value = ((OpcionCombo)cboEstado.SelectedItem).Texto.ToString();
-                    Limpiar();
-                }
-                else { MessageBox.Show(Mensaje); }
-            }
+
+            }else { MessageBox.Show("Confirmar clave y clave no son iguales"); }
+
         }
 
 
@@ -184,7 +190,7 @@ namespace CapaPresentacion
 
                     foreach (OpcionCombo oc in cboEstado.Items)
                     {
-                        if (Convert.ToInt32(oc.Valor) == Convert.ToInt32(dgvData.Rows[indice].Cells["Estado"].Value))
+                        if (Convert.ToInt32(oc.Valor) == Convert.ToInt32(dgvData.Rows[indice].Cells["EstadoValor"].Value))
                         {
                             int indice_combo = cboEstado.Items.IndexOf(oc);
                             cboEstado.SelectedIndex = indice_combo;

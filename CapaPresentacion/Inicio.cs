@@ -61,7 +61,7 @@ namespace CapaPresentacion
             formulario.TopLevel = false;
             formulario.FormBorderStyle = FormBorderStyle.None;
             formulario.Dock= DockStyle.Fill;
-            formulario.BackColor = Color.Gray;
+            formulario.BackColor = Color.Orange;
             Contenedor.Controls.Add(formulario);
             formulario.Show();
         }
@@ -114,7 +114,7 @@ namespace CapaPresentacion
 
         private void MenuReportes_Click(object sender, EventArgs e)
         {
-
+            AbrirFormulario(MenuAcercaDe , new MenuAcercaDE());
         }
 
         private void SubMenuNegocio_Click(object sender, EventArgs e)

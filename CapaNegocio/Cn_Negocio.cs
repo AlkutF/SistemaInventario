@@ -44,14 +44,31 @@ namespace CapaNegocio
 
 
         }
-        public byte[] ObtenerLogo(out bool obtenido)
+        public byte[] ObtenerLogo(out bool obtenido , int id)
         {
-            return objcd_Negocio.ObtenerLogo(out obtenido);
+            if(id != 0)
+            {
+                return objcd_Negocio.ObtenerLogo(out obtenido, id);
+            }
+            else
+            {
+                return objcd_Negocio.ObtenerLogo(out obtenido, 1);
+            }
+            
         }
 
-        public bool ActualizarLogo(byte [] imagen,out string mensaje)
+        public bool ActualizarLogo(byte [] imagen,out string mensaje, int id)
         {
-            return objcd_Negocio.ActualizarLogo(imagen, out mensaje);
+            if(id != 0)
+            {
+                return objcd_Negocio.ActualizarLogo(imagen, out mensaje, id);
+            }
+            else
+            {
+                return objcd_Negocio.ActualizarLogo(imagen, out mensaje, 1);
+            }
+           
         }
+
     }
 }
